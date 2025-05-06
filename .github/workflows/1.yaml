@@ -163,7 +163,7 @@ jobs:
       - name: Build zip artifact 
         run: | 
           mkdir build 
-          cp src/ build/
+          cp -r src/ build/
           cd build && zip -r artifact.zip .
 
       - name: Display the files 
