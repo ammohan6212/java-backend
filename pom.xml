@@ -10,6 +10,7 @@
   <packaging>jar</packaging>
 
   <name>springboot-demo</name>
+  <description>Minimal Spring Boot App with custom source directory and JaCoCo</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -23,20 +24,53 @@
   </properties>
 
   <build>
-    <sourceDirectory>src</sourceDirectory> <!-- 👈 Custom source directory -->
+    <!-- 👇 Custom source directory -->
+    <sourceDirectory>src</sourceDirectory>
     <plugins>
+
+      <!-- ✅ JaCoCo for code coverage -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.11</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- ✅ Spring Boot Maven Plugin -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
     </plugins>
   </build>
 
   <dependencies>
-    <!-- Spring Boot Web Starter -->
+    <!-- ✅ Spring Boot Web Starter -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+
+    <!-- ✅ JUnit for testing -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
 </project>
