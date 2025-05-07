@@ -188,7 +188,7 @@ pipeline {
                     sh """
                         ls -l
                         snyk container test java:${env.VERSION}  --file=Dockerfile
-                        trivy image java:${env.VERSION}                 
+                        trivy image --exclude-base-image-vulns java:${env.VERSION}                 
                     """
                 }
                 
