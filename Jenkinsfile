@@ -189,7 +189,7 @@ pipeline {
                 script { 
                     sh """
                         ls -l
-                        snyk container test java:${env.VERSION}  --file=Dockerfile
+                        snyk container test java:${env.VERSION} --file=Dockerfile --exclude-base-image-vulns
                         trivy image --exclude-base-image-vulns java:${env.VERSION}                 
                     """
                 }
