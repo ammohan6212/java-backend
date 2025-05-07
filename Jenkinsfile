@@ -165,7 +165,6 @@ pipeline {
             steps{
                 script{
                     sh '''
-                        mkdir build
                         cp -r src/*.java  build/ || true
                         cd build && zip -r java-artifact.zip .
                     '''
