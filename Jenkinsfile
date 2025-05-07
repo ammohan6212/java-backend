@@ -43,7 +43,10 @@ pipeline {
             agent { label 'security-agent' }
             steps{
                 script{
-                    sh 'mvn install'
+                    sh '''
+                        mvn install 
+                        mvn clean compile
+                    '''
 
                 }
             }
